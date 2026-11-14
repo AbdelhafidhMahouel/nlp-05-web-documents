@@ -1,8 +1,12 @@
 """src/nlp/stage03_transform.py.
 
-Author: Abdelhafidh Mahouel (2026-11)
+Author: Abdelhafidh Mahouel
+Date: 2026-11
 
-(EDIT YOUR VERSION OF THIS FILE)
+Modification (Phase 4):
+  Added two derived fields to the Transform stage:
+  - abstract_sentence_count: number of sentences in the abstract.
+  - avg_words_per_sentence: abstract word count divided by sentence count.
 
 Source: validated BeautifulSoup object
 Sink: Pandas DataFrame
@@ -81,6 +85,7 @@ Edit your Python file to change:
 # ============================================================
 
 import logging
+import re
 
 from bs4 import BeautifulSoup, Tag
 import pandas as pd
@@ -265,6 +270,29 @@ def run_transform(
     )
     LOG.info(f"Calculated author count: {author_count}")
 
+    # MODIFICATION: Calculate derived field: abstract sentence count
+    # Split the abstract wherever a sentence-ending mark (. ! ?)
+    # is followed by whitespace. This regex keeps decimals like "3.5"
+    # together because there is no space after the period.
+    # Empty pieces are dropped so trailing spaces are not counted.
+    sentences: list[str] = (
+        [s for s in re.split(r"(?<=[.!?])\s+", abstract) if s.strip()]
+        if abstract != "unknown"
+        else []
+    )
+    abstract_sentence_count: int = len(sentences)
+    LOG.info(f"Calculated abstract sentence count: {abstract_sentence_count}")
+
+    # MODIFICATION: Calculate derived field: average words per sentence
+    # A simple readability measure: longer sentences are usually harder to read.
+    # Guard against division by zero when no sentences are found.
+    avg_words_per_sentence: float = (
+        round(abstract_word_count / abstract_sentence_count, 1)
+        if abstract_sentence_count > 0
+        else 0.0
+    )
+    LOG.info(f"Calculated average words per sentence: {avg_words_per_sentence}")
+
     LOG.info("========================")
     LOG.info("STAGE 03f: Build record and create DataFrame")
     LOG.info("========================")
@@ -278,6 +306,8 @@ def run_transform(
         "abstract": abstract,
         "abstract_word_count": abstract_word_count,
         "author_count": author_count,
+        "abstract_sentence_count": abstract_sentence_count,
+        "avg_words_per_sentence": avg_words_per_sentence,
     }
 
     df = pd.DataFrame([record])
@@ -288,6 +318,8 @@ def run_transform(
     LOG.info(f"  Title: {title}")
     LOG.info(f"  Author count: {record['author_count']}")
     LOG.info(f"  Abstract word count: {record['abstract_word_count']}")
+    LOG.info(f"  Abstract sentence count: {record['abstract_sentence_count']}")
+    LOG.info(f"  Avg words per sentence: {record['avg_words_per_sentence']}")
     LOG.info(f"  DataFrame preview:\n{df.head()}")
 
     LOG.info("Sink: Pandas DataFrame created")

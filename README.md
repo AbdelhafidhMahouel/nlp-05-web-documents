@@ -1,8 +1,8 @@
 # nlp-05-web-documents
 
 [![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](pyproject.toml)
-[![CI](https://github.com/denisecase/nlp-05-web-documents/actions/workflows/ci-python-zensical.yml/badge.svg)](https://github.com/denisecase/nlp-05-web-documents/actions/workflows/ci-python-zensical.yml)
-[![Documentation](https://img.shields.io/badge/docs-site-blue?logo=github)](https://denisecase.github.io/nlp-05-web-documents/)
+[![CI](https://github.com/AbdelhafidhMahouel/nlp-05-web-documents/actions/workflows/ci-python-zensical.yml/badge.svg)](https://github.com/AbdelhafidhMahouel/nlp-05-web-documents/actions/workflows/ci-python-zensical.yml)
+[![Documentation](https://img.shields.io/badge/docs-site-blue?logo=github)](https://abdelhafidhmahouel.github.io/nlp-05-web-documents/)
 
 [![uv managed](https://img.shields.io/badge/uv-managed-DE5FE9)](https://docs.astral.sh/uv/)
 [![ty type checked](https://img.shields.io/badge/ty-type_checked-2F80ED)](https://docs.astral.sh/ty/)
@@ -13,11 +13,16 @@
 
 ## Project Overview
 
-Author: Denise Case
+Author: Abdelhafidh Mahouel
 
-Date: 2026 October
+Date: 2026-11
 
-Fifth project in the Web Mining and Applied NLP course.
+Fifth project in the Web Mining and Applied NLP course
+(44620, Northwest Missouri State University).
+
+This repository was created from the
+[nlp-05-web-documents example project](https://github.com/denisecase/nlp-05-web-documents)
+by Denise Case and customized for my own work.
 
 This project introduces web document acquisition
 and structured information extraction from HTML.
@@ -86,6 +91,13 @@ Explore these important project components:
 - [docs/](docs/) - project documentation.
 - [zensical.toml](zensical.toml) - documentation configuration.
 
+### Planned Customization
+
+- Point the pipeline at a different arXiv abstract page on an NLP topic of interest.
+- Reuse the same validation and extraction logic to test how reusable the pipeline is.
+- Add a new derived field, such as title word count or number of subject categories.
+- Save the results to my own processed CSV file.
+
 The goal is to understand how information
 is extracted from semi-structured web documents
 and transformed into analysis-ready data.
@@ -139,7 +151,7 @@ uv run python -m pytest
 
 ## Project Documentation
 
-The [hosted documentation site](https://denisecase.github.io/nlp-05-web-documents/)
+The [hosted documentation site](https://abdelhafidhmahouel.github.io/nlp-05-web-documents/)
 is published using Zensical and GitHub Pages.
 
 The documentation site is used to present the project report,
@@ -153,8 +165,8 @@ to check project files and publish the docs.
 
 GitHub Actions include:
 
-- [CI: Python and Documentation Checks](https://github.com/denisecase/nlp-05-web-documents/actions/workflows/ci-python-zensical.yml)
-- [CD: Documentation Deployment](https://github.com/denisecase/nlp-05-web-documents/actions/workflows/deploy-zensical.yml)
+- [CI: Python and Documentation Checks](https://github.com/AbdelhafidhMahouel/nlp-05-web-documents/actions/workflows/ci-python-zensical.yml)
+- [CD: Documentation Deployment](https://github.com/AbdelhafidhMahouel/nlp-05-web-documents/actions/workflows/deploy-zensical.yml)
 
 ## Developer Reference
 
@@ -239,7 +251,7 @@ testing, documentation, and code quality.
 
 ## Links
 
-- [Hosted Documentation](https://denisecase.github.io/nlp-05-web-documents/)
+- [Hosted Documentation](https://abdelhafidhmahouel.github.io/nlp-05-web-documents/)
 - [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
 - [Citation](CITATION.cff)
 - [License](LICENSE)

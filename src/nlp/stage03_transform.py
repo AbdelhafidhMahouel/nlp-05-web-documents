@@ -1,5 +1,7 @@
 """src/nlp/stage03_transform.py.
 
+Author: Abdelhafidh Mahouel (2026-11)
+
 (EDIT YOUR VERSION OF THIS FILE)
 
 Source: validated BeautifulSoup object
